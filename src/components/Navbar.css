@@ -1,0 +1,42 @@
+/* Ajuste del menú fijo */
+.menu {
+    position: fixed; /* Fija el menú en la pantalla */
+    top: 10px; /* Ajusta la distancia desde la parte superior */
+    right: 10px; /* Coloca el menú en la esquina derecha */
+    background-color: #989898; /* Fondo rojo para el menú */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
+    display: flex;
+    align-items: center;
+    opacity: 1; /* Asegura que no sea transparente */
+  }
+  
+  /* Estilo de los enlaces dentro del menú */
+  .menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+  }
+  
+  /* Efecto hover para los enlaces */
+  .menu a:hover {
+    background-color: #535353; /* Efecto al pasar el mouse */
+    border-radius: 5px;
+  }
+  
+  /* Ajustes para pantallas más pequeñas */
+  @media screen and (max-width: 768px) {
+    .menu {
+      top: 15px; /* Ajustamos el espacio superior en pantallas más pequeñas */
+      right: 10px; /* Ajustamos el espacio derecho */
+      padding: 8px 15px; /* Reducimos el espaciado interno */
+    }
+  
+    .menu a {
+      font-size: 16px; /* Reducimos el tamaño de fuente */
+    }
+  }
+  

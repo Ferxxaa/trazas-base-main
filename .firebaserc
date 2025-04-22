@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "autenticacion-d519a",
+    "intranet": "intranet-59959"
+  },
+  "targets": {
+    "intranet-59959": {
+      "hosting": {
+        "intranet": [
+          "intranet-59959"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

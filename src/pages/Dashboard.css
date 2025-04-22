@@ -1,0 +1,190 @@
+/* Dashboard.css */
+
+/* Aseguramos que la página tenga un estilo general flexible para pantallas pequeñas */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F4F6F9;
+}
+
+.container {
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Ajuste de la distribución de los gráficos y la tabla */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.grid-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container {
+    width: 100%;
+    height: 300px; /* Ajustamos la altura de los gráficos */
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Permite desplazarse horizontalmente si la tabla es muy ancha */
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    background-color: #C62B27;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #A62A24;
+}
+
+/* Ajustes específicos para dispositivos pequeños */
+@media screen and (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Cambia a 2 columnas en tablets */
+    }
+
+    .grid-item {
+        padding: 15px;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    .table-container {
+        margin-top: 20px;
+        overflow-x: scroll; /* Permite que la tabla sea desplazable horizontalmente */
+    }
+
+    button {
+        width: 100%; /* Botones más grandes en móviles */
+    }
+}
+
+/* Ajustes para pantallas más pequeñas, como teléfonos */
+@media screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Pone todos los elementos en una sola columna */
+    }
+
+    .chart-container {
+        height: 200px;
+    }
+
+    table {
+        font-size: 12px; /* Reducir tamaño de fuente para pantallas más pequeñas */
+    }
+
+    .table-container {
+        margin-top: 15px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas, como teléfonos en modo vertical */
+@media screen and (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Todos los elementos en una sola columna */
+    }
+
+    .chart-container {
+        height: 180px;
+    }
+
+    table th, table td {
+        padding: 8px; /* Reducimos el padding de las celdas */
+    }
+
+    button {
+        font-size: 12px;
+        width: 100%;
+    }
+
+    .grid-item {
+        padding: 10px;
+    }
+}
+
+/* Contenedor del menú fijo */
+.menu {
+    position: fixed; /* Fija el menú en la pantalla */
+    top: 20px; /* Distancia desde la parte superior */
+    right: 20px; /* Distancia desde el lado derecho */
+    background-color: #C62B27; /* Color de fondo del menú */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
+    display: flex;
+    align-items: center;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.menu a:hover {
+    background-color: #A62A24; /* Efecto al pasar el mouse */
+    border-radius: 5px;
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media screen and (max-width: 768px) {
+    .menu {
+        top: 15px; /* Ajustamos el espacio superior en pantallas más pequeñas */
+        right: 10px; /* Ajustamos el espacio derecho */
+        padding: 8px 15px; /* Reducimos el espaciado interno */
+    }
+
+    .menu a {
+        font-size: 16px; /* Reducimos el tamaño de fuente */
+    }
+}
