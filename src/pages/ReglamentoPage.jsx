@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Row, Col, Button, Form, Alert } from 'react-bootstrap';
 import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom'; // Importar useNavigate
 
@@ -28,6 +28,32 @@ const ReglamentoPage = () => {
   // Función para ir atrás
   const handleBack = () => {
     navigate(-1); // Navegar hacia la página anterior
+  };
+
+  // Estado para el formulario de comentarios
+  const [comentario, setComentario] = useState('');
+  const [mensajeEnviado, setMensajeEnviado] = useState(false);
+
+  // Función para enviar el formulario
+  const handleComentarioSubmit = (e) => {
+    e.preventDefault();
+
+    if (comentario.trim() === '') return;
+
+    const comentariosPrevios = JSON.parse(localStorage.getItem('comentarios')) || [];
+    const nuevoComentario = {
+      id: Date.now(),
+      texto: comentario,
+      fecha: new Date().toLocaleString(),
+    };
+
+    const comentariosActualizados = [...comentariosPrevios, nuevoComentario];
+    localStorage.setItem('comentarios', JSON.stringify(comentariosActualizados));
+
+    setComentario('');
+    setMensajeEnviado(true);
+
+    setTimeout(() => setMensajeEnviado(false), 3000);
   };
 
   return (
@@ -77,6 +103,25 @@ const ReglamentoPage = () => {
               </a>
             </Col>
           </Row>
+
+          {/* Formulario de comentario */}
+          <section className="mt-5">
+            <Form onSubmit={handleComentarioSubmit}>
+              <Form.Group>
+                <Form.Label>Escribe tu comentario</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  value={comentario}
+                  onChange={(e) => setComentario(e.target.value)}
+                  required
+                />
+              </Form.Group>
+
+              <Button className="mt-3" variant="danger" type="submit">Enviar Comentario</Button>
+            </Form>
+            {mensajeEnviado && <Alert variant="success" className="mt-3">¡Comentario enviado correctamente!</Alert>}
+          </section>
 
           {/* Botón de Atrás sin flecha */}
           <Row className="justify-content-center mt-5">
