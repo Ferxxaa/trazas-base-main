@@ -6,16 +6,15 @@ import { auth } from '../firebase';
 
 const AdminReportes = () => {
   const [reportes, setReportes] = useState([]);
+  const [mensajeError, setMensajeError] = useState('');  // Estado para manejar el mensaje de error
   const navigate = useNavigate();
 
-  // Verificación de rol al cargar el componente
   useEffect(() => {
     const user = auth.currentUser;
-
     const adminUID = 'OPzraOsNQ5YXrEBNSPGOMSTpGJJ3'; // UID del admin
 
     if (!user || user.uid !== adminUID) {
-      alert('Acceso denegado. Solo los administradores pueden ver esta sección.');
+      setMensajeError('Acceso denegado. Solo los administradores pueden ver esta sección.');
       navigate('/');
     }
   }, [navigate]);
@@ -39,6 +38,8 @@ const AdminReportes = () => {
           Administración de Reportes
         </h2>
 
+        {mensajeError && <div className="alert alert-danger">{mensajeError}</div>} {/* Mostrar mensaje de error */}
+
         <Card className="shadow-sm rounded">
           <Card.Body>
             {reportes.length === 0 ? (
@@ -46,7 +47,7 @@ const AdminReportes = () => {
             ) : (
               <div className="table-responsive">
                 <Table striped bordered hover size="sm" className="table-sm">
-                  <thead className="thead-dark">
+                  <thead className="bg-dark text-white">
                     <tr>
                       <th>ID</th>
                       <th>Reporte</th>
@@ -67,7 +68,7 @@ const AdminReportes = () => {
                             variant="danger"
                             size="sm"
                             onClick={() => eliminarReporte(reporte.id)}
-                            className="d-flex justify-content-center"
+                            className="d-flex justify-content-center w-100 mt-2"
                           >
                             Eliminar
                           </Button>
