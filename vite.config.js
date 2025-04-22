@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  optimizeDeps: {
-    include: ['crypto-browserify']
-  },
   resolve: {
     alias: {
-      crypto: 'crypto-browserify'
-    }
-  }
+      crypto: 'crypto-browserify',  // Resuelve 'crypto' a 'crypto-browserify'
+    },
+  },
+  optimizeDeps: {
+    include: ['crypto-browserify'],  // Asegura que 'crypto-browserify' sea optimizado
+  },
 });
